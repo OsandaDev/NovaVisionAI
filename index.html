@@ -5,64 +5,277 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaVision AI</title>
 
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+    <!-- Background Effects -->
+    <div class="background-glow glow1"></div>
+    <div class="background-glow glow2"></div>
 
-    <div class="header">
-        <h1>NovaVision AI</h1>
-        <p>Create stunning AI videos in seconds</p>
-    </div>
+    <!-- Header -->
+    <header>
 
-    <div class="card">
+        <div class="logo-section">
+            <div class="logo">N</div>
 
-        <label>Video Prompt</label>
+            <div>
+                <h1>NovaVision AI</h1>
+                <p>Next Generation AI Video Creator</p>
+            </div>
+        </div>
 
-        <textarea id="prompt"
-        placeholder="A futuristic city at sunset..."></textarea>
+        <div class="header-controls">
 
-        <label>Video Style</label>
+            <button id="themeBtn">
+                🌙 Dark Mode
+            </button>
 
-        <select id="style">
-            <option>Cinematic</option>
-            <option>Anime</option>
-            <option>Realistic</option>
-            <option>3D Animation</option>
-        </select>
-
-        <button id="generateBtn">
-            Generate Video
-        </button>
-
-        <div class="progress-container">
-
-            <div class="progress-bar"
-                 id="progressBar"></div>
+            <div class="credits-card">
+                Credits:
+                <span id="credits">100</span>
+            </div>
 
         </div>
 
-        <div id="status"></div>
+    </header>
 
-    </div>
+    <!-- Main Layout -->
+    <main>
 
-    <div class="result-card"
-         id="resultCard">
+        <!-- Left Column -->
+        <section class="generator-panel">
 
-        <div class="video-placeholder">
-            ▶
-        </div>
+            <div class="card">
 
-        <h3>Video Generated</h3>
+                <h2>Create Video</h2>
 
-        <p id="resultText"></p>
+                <label>Prompt</label>
 
-    </div>
+                <textarea
+                    id="prompt"
+                    placeholder="Describe the video you want to generate..."
+                ></textarea>
 
-</div>
+                <label>AI Model</label>
 
-<script src="script.js"></script>
+                <select id="model">
+
+                    <option value="5">
+                        NovaVision Lite (5 Credits)
+                    </option>
+
+                    <option value="10" selected>
+                        NovaVision Pro (10 Credits)
+                    </option>
+
+                    <option value="20">
+                        NovaVision Ultra (20 Credits)
+                    </option>
+
+                </select>
+
+                <label>Video Style</label>
+
+                <select id="style">
+
+                    <option>Cinematic</option>
+
+                    <option>Anime</option>
+
+                    <option>Realistic</option>
+
+                    <option>3D Animation</option>
+
+                    <option>Sci-Fi</option>
+
+                    <option>Fantasy</option>
+
+                </select>
+
+                <label>Duration</label>
+
+                <select id="duration">
+
+                    <option>5 Seconds</option>
+
+                    <option selected>
+                        10 Seconds
+                    </option>
+
+                    <option>20 Seconds</option>
+
+                    <option>60 Seconds</option>
+
+                </select>
+
+                <label>Resolution</label>
+
+                <select id="resolution">
+
+                    <option>720p</option>
+
+                    <option selected>
+                        1080p
+                    </option>
+
+                    <option>2K</option>
+
+                    <option>4K</option>
+
+                </select>
+
+                <button id="generateBtn">
+                    Generate Video
+                </button>
+
+            </div>
+
+            <div class="card queue-card">
+
+                <h3>Generation Queue</h3>
+
+                <div id="queueStatus">
+                    Waiting...
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Generation Progress</h3>
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar"
+                    ></div>
+
+                </div>
+
+                <div id="generationStage">
+                    Ready
+                </div>
+
+                <div id="estimatedTime">
+                    Estimated Time: --
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Right Column -->
+        <section class="results-panel">
+
+            <div class="card stats-card">
+
+                <h2>Live Statistics</h2>
+
+                <div class="stat">
+
+                    <span>Videos Generated</span>
+
+                    <span id="videoCount">
+                        1247
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <span>Active Users</span>
+
+                    <span id="activeUsers">
+                        328
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <span>GPU Utilization</span>
+
+                    <span id="gpuUsage">
+                        97%
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div
+                class="card result-card"
+                id="resultCard"
+            >
+
+                <h2>Generated Video</h2>
+
+                <div class="video-preview">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                    <div
+                        class="video-duration"
+                        id="videoDuration"
+                    >
+                        00:10
+                    </div>
+
+                </div>
+
+                <div class="video-details">
+
+                    <p>
+                        <strong>Prompt:</strong>
+                    </p>
+
+                    <p id="resultPrompt">
+                        Waiting...
+                    </p>
+
+                </div>
+
+                <button id="downloadBtn">
+                    Download Video
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Generation History</h2>
+
+                <div id="historyList">
+
+                    <div class="history-empty">
+                        No videos generated yet
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            Powered by NovaVision AI Engine v4.7
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
