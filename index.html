@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaVision AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>NovaVision AI</h1>
+        <p>Create stunning AI videos in seconds</p>
+    </div>
+
+    <div class="card">
+
+        <label>Video Prompt</label>
+
+        <textarea id="prompt"
+        placeholder="A futuristic city at sunset..."></textarea>
+
+        <label>Video Style</label>
+
+        <select id="style">
+            <option>Cinematic</option>
+            <option>Anime</option>
+            <option>Realistic</option>
+            <option>3D Animation</option>
+        </select>
+
+        <button id="generateBtn">
+            Generate Video
+        </button>
+
+        <div class="progress-container">
+
+            <div class="progress-bar"
+                 id="progressBar"></div>
+
+        </div>
+
+        <div id="status"></div>
+
+    </div>
+
+    <div class="result-card"
+         id="resultCard">
+
+        <div class="video-placeholder">
+            ▶
+        </div>
+
+        <h3>Video Generated</h3>
+
+        <p id="resultText"></p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
